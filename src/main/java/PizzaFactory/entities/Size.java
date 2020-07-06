@@ -13,13 +13,13 @@ import javax.persistence.*;
 public class Size {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name="name")
+  @Column(name="name",nullable=false)
   private String name;
 
-  @Column(name="price")
+  @Column(name="price", nullable=false)
   private int price;
 
 }

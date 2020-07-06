@@ -2,19 +2,20 @@ package PizzaFactory.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import lombok.AllArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="pizzas")
 public class Pizza {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
 
   @ManyToOne

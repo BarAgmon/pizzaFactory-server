@@ -15,7 +15,7 @@ import java.util.List;
 public class Order {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
 
   @OneToMany(mappedBy = "order")
@@ -25,10 +25,10 @@ public class Order {
   @JoinColumn(name="costumer_id", referencedColumnName = "id")
   private Costumer costumer;
 
-  @Column(name="order_time")
+  @Column(name="order_time", nullable=false)
   private Date OrderTime;
 
-  @Column(name="comment")
+  @Column(name="comment", nullable=false)
   private String comment;
 
   @ManyToOne
