@@ -1,24 +1,26 @@
 package PizzaFactory.Controller;
+import PizzaFactory.contracts.GetSizeContract;
 import PizzaFactory.entities.State;
 import PizzaFactory.repositories.StateRepository;
+import PizzaFactory.services.Size.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestMapping(value="/api/sizes")
 @RestController
 public class SizeController {
 
   @Autowired
-  private StateRepository stateRepository;
+  private SizeService sizeService;
 
   @GetMapping("/")
-  public String getAllOptionalSizes() {
-    String str = "hello world";
-    return str.toUpperCase().replaceAll(" ","_");
+  public List<GetSizeContract> getAllOptionalSizes() {
+    return sizeService.getAllOptionalSizes().stream().map(GetSizeContract::convertSizeEntityToContract)
+            .collect(Collectors.toList());
   }
-
 }
